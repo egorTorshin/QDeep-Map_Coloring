@@ -13,7 +13,7 @@
 # limitations under the License.
 
 import dwavebinarycsp
-from hybrid.reference.kerberos import KerberosSampler
+from neal import SimulatedAnnealingSampler
 
 from utilities import visualize_map
 
@@ -84,7 +84,7 @@ for x, y in neighbours:
 bqm = dwavebinarycsp.stitch(csp)
 
 # Solve BQM
-solution = KerberosSampler().sample(bqm,
+solution = SimulatedAnnealingSampler().sample(bqm,
                        qpu_params={'label': 'Example - Map Coloring'})
 best_solution = solution.first.sample
 print("Solution: ", best_solution)
